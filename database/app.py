@@ -1,10 +1,17 @@
-import mysql.connector
+import streamlit as st
 
-mydb = mysql.connector.connect(
-    host="localhost",
-    user="root",
-    password="",        # blank if no password in XAMPP
-    database="salary_management"
-)
+st.sidebar.title("Navigation")
 
-print("✅ Connected to MySQL!")
+page = st.sidebar.radio("Go to", 
+                        ["Expense Management", 
+                         "Dashboard", 
+                         "Prediction"])
+
+if page == "Expense Management":
+    import modules.expense_management
+
+elif page == "Dashboard":
+    import modules.dashboard
+
+elif page == "Prediction":
+    import modules.prediction
